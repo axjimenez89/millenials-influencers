@@ -4,6 +4,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var MySQLStore = require('express-mysql-session')(session);
+var mysql = require('mysql');
+
 
 
 app.get('/', function (req, res) {
@@ -16,9 +18,11 @@ app.listen(3000, function () {
 
 //connecting mysql for sessions 
 var options = {
-    host: 'localhost',
+    host: process.env.DB_HOST,
     port: 3306,
-  
+    user: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE
 };
  
 var sessionStore = new MySQLStore(options);
