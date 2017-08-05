@@ -9,7 +9,6 @@ var routes = require('controllers/routes.js');
 
 
 var sess;
-
 app.get('/',function(req,res){
 sess = req.session;
 //Session set when user Request our app via URL
@@ -62,17 +61,7 @@ req.session.destroy(function(err) {
 
 
 
-// //creating a user
 
-// var create_user = function(req, res, next){
-//   var email = req.body.email;
-//   var password = req.body.password;
-
-// app.get('/new', function(req, res){
-//     res.render('sessions/new', { 'error': error });
-
-// });
-// }
 
 
 /* GET home page. */
@@ -80,3 +69,11 @@ router.get('/', function (req, res, next) {
     res.render('index.html');
 });
 module.exports = router;
+
+
+
+
+
+
+
+

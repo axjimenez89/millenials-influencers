@@ -1,0 +1,138 @@
+
+$theme-site:#ffb6c1;
+
+// FONTS
+$main-font: 'Montserrat',
+sans-serif;
+$main-font-semi: 'montserratsemibold',
+sans-serif;
+$main-font-skinny: 'montserratlight',
+sans-serif;
+$secondary-font: 'Open Sans',
+sans-serif;
+// COLORS
+$theme-site:#ffb6c1;
+$site-green: #73C48D;
+$site-green-active: #63AB80;
+$header-grey: #30363F;
+$body-black: #1F232A;
+$inactive-grey: #A2A8B1;
+$separator-grey: #d2d7dc;
+$separator-lightgrey: #efefef;
+
+//SEPARATORS:
+// usage:
+// .some-element { @include separator("bottom", $separator-grey); }
+@mixin separator($position, $color) {
+    border-#{$position}: 1px solid $color;
+}
+
+//BUTTONS:
+//BUTTON MIXINS
+@mixin button-box-shadow($color) {
+    @if $color {
+        &:hover {
+            box-shadow: 0px 0px 4px $color;
+        }
+        &:active {
+            box-shadow: 0px 0px 0px white;
+        }
+    }
+    @else {
+        &:hover {
+            box-shadow: 0px 0px 0px white;
+        }
+        &:active {
+            box-shadow: 0px 0px 0px white;
+        }
+    }
+}
+
+
+@mixin trans($action){
+    transition: $action .4s;
+
+}
+
+// PLACEHOLDER CLASSES
+
+%basic-input{
+    border-radius: 1px;
+    border:1px solid $inactive-grey;
+    outline: none;
+    @include trans(border);
+    &:focus {
+        border: none;
+        outline: none;
+     
+        border:1px solid $site-green;
+    }
+
+}
+
+
+%basic-button {
+    border-radius: 1px;
+    font-family: $main-font;
+    text-transform: capitalize;
+    transition: background .4s, box-shadow .4s, color .4s, border .4s;
+    cursor: pointer;
+    &:focus {
+        outline: none;
+    }
+}
+
+%x-button {
+  font-size: 21px;
+  color: $avo-green;
+  font-family: $secondary-font;
+  font-weight: 100;
+  border: 2px solid;
+  border-radius: 50%;
+  transition: color .5s ease;
+
+  cursor: pointer;
+
+  &:hover {
+    color: $social-following-red;
+  }
+}
+
+//ACTUAL BUTTON CLASSES
+.primary-button {
+    border: none;
+    @extend %basic-button;
+    background: $avo-green;
+    text-transform: uppercase;
+    color: white;
+    @include button-box-shadow($avo-green-active);
+}
+
+.secondary-button {
+    @extend %basic-button;
+    border: 1px solid $header-grey;
+    background: white;
+    color: $header-grey;
+    @include button-box-shadow($avo-green-active);
+    &:hover {
+      color: $avo-green-active;
+      border: 1px solid $avo-green-active;
+    }
+}
+
+// UTILITY MIXINS
+@mixin clearfix {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+@mixin green-hover{
+    transition: color .4s;
+    &:hover{
+        cursor:pointer;
+        color:$avo-green;
+    }
+}
