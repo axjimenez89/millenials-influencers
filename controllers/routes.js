@@ -31,7 +31,7 @@ var login = function(req, res, next){
   var password = req.body.password;
   var auth_error = 'Incorrect Email / Password!';
 
-app.post('/login',function(req,res){
+app.post('/login.html',function(req,res){
   sess = req.session;
 //In this we are assigning email to sess.email variable.
 //email comes from HTML page.
@@ -74,6 +74,9 @@ req.session.destroy(function(err) {
 // });
 // }
 
-app.listen(3000,function(){
-console.log("App Started on PORT 3000");
-};
+
+/* GET home page. */
+router.get('/', function (req, res, next) {
+    res.render('index.html');
+});
+module.exports = router;

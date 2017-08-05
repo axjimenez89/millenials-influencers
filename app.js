@@ -14,6 +14,8 @@ app.use("/", express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+
+
 app.use(session({
   secret: 'demo-secret',
   resave: false,
@@ -45,4 +47,13 @@ app.use(session({
 var connection = mysql.createConnection(options); // or mysql.createPool(options); 
 var sessionStore = new MySQLStore({}/* session store options */, connection);
 
+
+app.route('/*').get(function(req, res) { 
+    return res.sendFile(path.join(__dirname, 'public/index.html')); 
+});
+
+
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!')
+})
 
